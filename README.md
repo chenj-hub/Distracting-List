@@ -10,10 +10,10 @@ It works with several Chrome Extensions and User scripts, including:
 
 ### For uBlacklist
 1. Open Options page of uBlacklist, click "Add a subscription" button under Subscription section.
-2. In URL, input []().
+2. In URL, input [https://raw.githubusercontent.com/chenj-hub/Distracting-List/main/DISTRACTING_BLACKLIST](https://raw.githubusercontent.com/chenj-hub/Distracting-List/main/DISTRACTING_BLACKLIST).
 
 ### For all other extensions
-1. Open []();
+1. Open [https://raw.githubusercontent.com/chenj-hub/Distracting-List/main/DISTRACTING](https://raw.githubusercontent.com/chenj-hub/Distracting-List/main/DISTRACTING);
 2. Copy and paste the content into the import page of extension.
 
 ## What is this list?
