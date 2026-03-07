@@ -21,3 +21,9 @@ This list contains websites that distract me.
 
 ## What is the .sh files?
 Tools to help me easily sort the list, and convert it to the uBlacklist format.
+
+### Ublock Custom List
+
+In "Filter lists", scroll to the bottom and add the raw link to the custom filter to "Import...". This will load the custom filter.
+
+* linkedin: Custom filter for linkedin to hide distracting elements

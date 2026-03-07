@@ -1,0 +1,82 @@
+# src: https://gist.github.com/jaydorsey/d728423051fbcb54f1abd53ed3920c9e
+# Block things on LinkedIn with uBlock Origin that LinkedIn won't let you block
+# Choose "Options" in uBlock Origin with a right-click, and add these to
+# "My filters"
+
+# ADDING YOUR OWN FILTERS
+#
+# Using Linkedin.com as an example
+#
+# 1. Open up the webpage
+# 2. Find some text you want to block
+# 3. Open up a console (right-click, Inspect, click the Console tab)
+# 4. Using the "greedy" placeholder example, find your text
+#
+#    $x("//*[(text()[contains(.,'YOUR TEXT HERE')])]")
+#
+# Click the arrow to expand the result in the console and hover over
+# one of the numbered elements shown; it should highlight an element in
+# the webpage
+#
+# The code above usually just finds the HEADER where the text is present. You typically
+# want to block one of the parent elements. Which parent element?
+#
+# You can use the xpath parent navigator syntax to move "up" thru the parents. Just
+# take what you wrote above, and keep adding a bunch of /.. values to the end. In between
+# each, expand the result in your console and hover over the elements to see if you've
+# moved up the tree enough to block the entire element you want
+
+# 2023-10-07 So many recommendations from LinkedIn
+linkedin.com##:xpath('//*[(text()[contains(.,                 "Suggested")])]/../../../../../../../../../..')
+linkedin.com##:xpath('//*[(text()[contains(.,        "Expert answers on ")])]/../../../../../../../../../..')
+linkedin.com##:xpath('//*[(text()[contains(.,       "Recommended for you")])]/../../../../../../../../../..')
+linkedin.com##:xpath('//*[(text()[contains(.,"Events recommended for you")])]/../../../../../../../../../..')
+
+# 2020-02-24 Promoted posts
+linkedin.com##:xpath('.//span[contains(@class, "feed-shared-actor__sub-description") and text()[contains(.,"Promoted")]]/../../../..')
+
+# 2023-01-23 Promoted posts (thanks @Vaansh! & @kagzgenius)
+linkedin.com##li:has-text(Promoted)
+
+# Sponsored posts (old version)
+linkedin.com##:xpath('//*[(text()[contains(.,"Promoted")])]/../../../..')
+
+# Events recommended for you 2023-03-03
+linkedin.com##:xpath(//span[text()[contains(.,'Events recommended for you')]]/../../../../../..)
+
+# Recommended for you 2023-03-03 Generic recommendation block w/ companies or pages
+linkedin.com##:xpath(//span[text()[contains(.,'Recommended for you')]]/../../../../../..)
+
+# 2021-09-24 Add to your feed
+linkedin.com##:xpath('//*[(text()[contains(.,"Add to your feed")])]/../../../../../../..')
+
+# Courses & News 2021-09-24
+linkedin.com##:xpath('//*[(text()[contains(.,"Today’s top courses")])]/../../../..')
+
+# Completely unrelated jobs that are always the exact opposite of your profile
+linkedin.com##:xpath('//*[(text()[contains(.,"Jobs recommended for you")])]/../../../../../../..')
+
+# 2022-12-06
+linkedin.com##:xpath(//span[(text()[contains(.,'Recommended for you')])]/../../../../../../../../../..)
+linkedin.com##:xpath(//span[(text()[contains(.,'Events recommended for you')])]/../../../../../../../../../..)
+
+# LinkedIn News 2023-03-03
+linkedin.com##:xpath(//span[text()[contains(.,'LinkedIn News')]]/../../..)
+# I think this one stopped working, but leaving here for reference
+linkedin.com##:xpath('//*[(text()[contains(.,"LinkedIn News")])]/../../../../../..')
+
+# Network likes 2023-03-03
+linkedin.com##:xpath(//span[text()[contains(.,'likes this')]]/../../../../..)
+
+# Starting a new position banner image 2023-03-03
+linkedin.com##:xpath(//div[contains(@class, 'feed-shared-celebration-image')])
+
+# Facebook junk (no longer updated, I don't use facebook)
+# Sponsored post garbage
+facebook.com##:xpath('//*[(text()[contains(.,"Sponsored")])]/../../../..')
+# Marketplace garbage
+facebook.com##:xpath('//*[(text()[contains(.,"Still Available on Marketplace")])]/../../../../../..')
+
+
+# Brainy game ad 2025-01-16
+linkedin.com##:xpath(//p[text()[contains(.,'Take a break with a LinkedIn puzzle game')]]/../../../..)
